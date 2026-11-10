@@ -1,0 +1,17 @@
+{
+  "run_started_utc": "2026-11-07T07:52:43+00:00",
+  "in_colab": false,
+  "device": "cpu",
+  "gpu": null,
+  "python": "3.13.5",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "torch_threads": 4,
+  "packages": {
+    "torch": "2.10.0",
+    "numpy": "2.3.2",
+    "pandas": "2.3.1",
+    "scikit-learn": "1.7.1",
+    "scipy": "1.16.1",
+    "matplotlib": "3.10.5"
+  }
+}

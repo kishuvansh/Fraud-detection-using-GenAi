@@ -1,0 +1,8 @@
+partition,rows,normal,fraud,used_for
+e1_train,199021,199021,0,E1 training (normal only)
+e1_val_calibration,42647,42647,0,E1 early stopping + threshold calibration (normal only)
+e2_train,199366,199021,345,"E2 training (all train rows, labels ignored)"
+e2_val,42721,42647,74,"E2 early stopping + threshold calibration (all val rows, labels ignored)"
+test,42720,42647,73,"Final evaluation of E1 and E2 (labels read once, after predictions are saved)"
+train_fraud,345,0,345,Excluded from E1 training; part of E2 training (unlabelled)
+val_fraud,74,0,74,Not used for any development decision

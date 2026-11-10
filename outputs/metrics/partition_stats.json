@@ -1,0 +1,99 @@
+{
+  "splits": [
+    {
+      "split": "train",
+      "rows": 199366,
+      "normal": 199021,
+      "fraud": 345,
+      "fraud_pct": 0.17304856394771426,
+      "share_of_dataset_pct": 70.00038622646213
+    },
+    {
+      "split": "val",
+      "rows": 42721,
+      "normal": 42647,
+      "fraud": 74,
+      "fraud_pct": 0.17321691907960957,
+      "share_of_dataset_pct": 14.999982444251721
+    },
+    {
+      "split": "test",
+      "rows": 42720,
+      "normal": 42647,
+      "fraud": 73,
+      "fraud_pct": 0.17088014981273408,
+      "share_of_dataset_pct": 14.999631329286148
+    },
+    {
+      "split": "total",
+      "rows": 284807,
+      "normal": 284315,
+      "fraud": 492,
+      "fraud_pct": 0.1727485630620034,
+      "share_of_dataset_pct": 100.0
+    }
+  ],
+  "experiment_partitions": [
+    {
+      "partition": "e1_train",
+      "rows": 199021,
+      "normal": 199021,
+      "fraud": 0,
+      "used_for": "E1 training (normal only)"
+    },
+    {
+      "partition": "e1_val_calibration",
+      "rows": 42647,
+      "normal": 42647,
+      "fraud": 0,
+      "used_for": "E1 early stopping + threshold calibration (normal only)"
+    },
+    {
+      "partition": "e2_train",
+      "rows": 199366,
+      "normal": 199021,
+      "fraud": 345,
+      "used_for": "E2 training (all train rows, labels ignored)"
+    },
+    {
+      "partition": "e2_val",
+      "rows": 42721,
+      "normal": 42647,
+      "fraud": 74,
+      "used_for": "E2 early stopping + threshold calibration (all val rows, labels ignored)"
+    },
+    {
+      "partition": "test",
+      "rows": 42720,
+      "normal": 42647,
+      "fraud": 73,
+      "used_for": "Final evaluation of E1 and E2 (labels read once, after predictions are saved)"
+    },
+    {
+      "partition": "train_fraud",
+      "rows": 345,
+      "normal": 0,
+      "fraud": 345,
+      "used_for": "Excluded from E1 training; part of E2 training (unlabelled)"
+    },
+    {
+      "partition": "val_fraud",
+      "rows": 74,
+      "normal": 0,
+      "fraud": 74,
+      "used_for": "Not used for any development decision"
+    }
+  ],
+  "meta": {
+    "seed": 42,
+    "ratios": {
+      "train": 0.7,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "method": "stratified group split",
+    "group_on": "V1-V28 + Amount",
+    "n_groups": 275663,
+    "dataset_sha256": "76274b691b16a6c49d3f159c883398e03ccd6d1ee12d9d8ee38f4b4b98551a89"
+  }
+}

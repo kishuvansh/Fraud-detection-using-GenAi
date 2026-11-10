@@ -1,0 +1,53 @@
+# Pre-registered model-selection and ablation protocol (registered 2026-11-07, before any validation result).
+# Changing this file after validation results exist would invalidate the selection; scripts record its SHA-256.
+
+base_config: e1_primary            # every variant inherits E1's settings and changes ONE thing
+seeds: [0, 1, 2, 3, 4]
+
+# ---------------------------------------------------------------- model selection (Option A)
+selection:
+  architectures:                   # trained on normal training rows only (E1 protocol)
+    baseline: {}                   # frozen E1 runs, reused read-only from outputs/runs/e1
+    latent4: {model: {latent_dim: 4}}
+    latent16: {model: {latent_dim: 16}}
+    beta0.5: {training: {beta: 0.5}}
+    beta2: {training: {beta: 2.0}}
+  scores:
+    recon_mse: per-feature mean squared reconstruction error, z = mu (baseline score)
+    norm_recon_mse: mean over features of squared error / that feature's mean squared error on NORMAL TRAINING rows
+    neg_elbo: negative ELBO, 10 latent samples, seed 2024
+  aggregations:
+    single: each seed scored separately; summarised by the mean validation AP over the 5 seeds
+    ensemble5: arithmetic mean of the 5 seeds' scores, one AP
+  candidates: 5 architectures x 3 scores x 2 aggregations = 30 (fixed; the search is not expanded)
+  metric: average precision (PR-AUC) on ALL validation rows (42,647 normal + 74 fraud)
+  tie_rule: >-
+    among candidates within 0.002 AP of the best, choose the simplest, ordered by
+    aggregation (single < ensemble5), then score (recon_mse < norm_recon_mse < neg_elbo),
+    then architecture (baseline < latent4 < latent16 < beta0.5 < beta2)
+  reported_for_context: [roc_auc, precision, recall, f1 at the threshold below]
+  threshold: >-
+    label-free and fixed in advance: 99th percentile of the selected score on the 42,647 NORMAL validation
+    rows (the baseline's rule). Fraud labels are not used to choose the threshold.
+  test_protection: >-
+    test labels are read only after the selection lock file exists; only the frozen baseline and the selected
+    candidate are evaluated on test as models (ablation configurations are evaluated afterwards as analysis only);
+    no change is made after test results are seen.
+
+# ---------------------------------------------------------------- ablation study (analysis, not selection)
+ablation:
+  configurations:                  # one change from the baseline each
+    latent2: {model: {latent_dim: 2}}
+    latent4: {model: {latent_dim: 4}}           # shared with selection
+    latent16: {model: {latent_dim: 16}}         # shared with selection
+    beta0.5: {training: {beta: 0.5}}            # shared with selection
+    beta2: {training: {beta: 2.0}}              # shared with selection
+    autoencoder: {training: {variational: false}}   # same network, no sampling, no KL term
+    no_kl_warmup: {training: {kl_warmup_epochs: 0}}
+    raw_amount: {preprocessing: {amount_transform: none}}   # standardised raw Amount instead of log1p(Amount)
+  reused:
+    baseline: outputs/runs/e1      # VAE, latent 8, beta 1, warm-up 10, log1p(Amount)
+    all_training_data: outputs/runs/e2
+  score: recon_mse                 # the baseline score, so only the ablated component changes
+  threshold: 99th percentile of each model's validation calibration scores (as in the baseline)
+  also_reported: [validation AP, active latent dimensions, generation quality (mean KS, std ratio) for models with a prior]

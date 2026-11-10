@@ -1,0 +1,48 @@
+{
+  "created_utc": "2026-11-07T12:12:37+00:00",
+  "split": {
+    "train": {
+      "rows": 199366,
+      "normal": 199021,
+      "fraud": 345
+    },
+    "val": {
+      "rows": 42721,
+      "normal": 42647,
+      "fraud": 74
+    },
+    "test": {
+      "rows": 42720,
+      "normal": 42647,
+      "fraud": 73
+    }
+  },
+  "split_fingerprints": {
+    "train": "f4ae37a453101bcc748a0ca1b3562cb5bcb29182ae1925c7b2f5a877f78d9a3e",
+    "val": "787c2d35b4e3a31fb509b2e8ac696303e44536f40ba46e56a85632ac6cd72c19",
+    "test": "d363f7ccd4c94fce9f868be86468dff282a4f30e3045292bda6bdc720b2bd858"
+  },
+  "validation_fraud_usage_so_far": {
+    "e1": "never scored: E1 calibration and early stopping used the 42,647 normal validation rows only",
+    "e2": "scored without labels (all 42,721 validation rows) to set E2's percentile threshold; labels never read",
+    "metrics_using_validation_labels": "none exist before this audit"
+  },
+  "test_set_history": {
+    "test_labels_read_for": [
+      "E1 and E2 final evaluation (scripts/evaluate_detection.py)",
+      "post-hoc analysis (scripts/analyse_models.py)",
+      "selecting normal test rows as the real reference for generation quality"
+    ],
+    "runs": {
+      "e1": {
+        "validation_rows_scored": 42647,
+        "test_predictions_written_utc": "2026-11-07T06:47:04.912750+00:00"
+      },
+      "e2": {
+        "validation_rows_scored": 42721,
+        "test_predictions_written_utc": "2026-11-07T06:47:54.197746+00:00"
+      }
+    }
+  },
+  "disclosure": "Test results of the baseline are already known. Two of the candidate ideas were suggested by earlier analyses that used test labels: the ELBO score (test AP 0.450 vs 0.432 for reconstruction error) and feature-wise normalisation (V27 dominates the fraud reconstruction error on test). Candidates suggested by test observations may look optimistic on the test set. Mitigation: the candidate list is fixed in configs/model_selection.yaml before any validation result is computed, selection uses validation data only, and the test set is evaluated once afterwards."
+}

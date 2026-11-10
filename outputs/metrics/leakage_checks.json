@@ -1,0 +1,92 @@
+[
+  {
+    "check": "splits_are_disjoint",
+    "passed": true,
+    "detail": "284,807 assigned indices, 284,807 unique"
+  },
+  {
+    "check": "every_row_assigned_no_subset",
+    "passed": true,
+    "detail": "284,807 of 284,807 rows assigned"
+  },
+  {
+    "check": "no_group_spans_two_splits",
+    "passed": true,
+    "detail": "0 of 275,663 groups span >1 split"
+  },
+  {
+    "check": "no_identical_vector_in_train_and_val_or_test",
+    "passed": true,
+    "detail": "identical-to-train rows: val 0, test 0 (independent hash check)"
+  },
+  {
+    "check": "class_rate_preserved_in_each_split",
+    "passed": true,
+    "detail": "fraud % train 0.1730, val 0.1732, test 0.1709 vs overall 0.1727 (tolerance \u00b10.02 pp)"
+  },
+  {
+    "check": "e1_training_set_is_normal_only",
+    "passed": true,
+    "detail": "199,021 rows, 0 fraud"
+  },
+  {
+    "check": "e1_calibration_set_is_normal_only",
+    "passed": true,
+    "detail": "42,647 rows, 0 fraud"
+  },
+  {
+    "check": "test_set_has_unseen_normal_and_fraud",
+    "passed": true,
+    "detail": "test: 42,647 normal, 73 fraud"
+  },
+  {
+    "check": "e1_model_inputs_exclude_class_and_time",
+    "passed": true,
+    "detail": "29 inputs: V1-V28, log1p_Amount"
+  },
+  {
+    "check": "e2_model_inputs_exclude_class_and_time",
+    "passed": true,
+    "detail": "29 inputs: V1-V28, log1p_Amount"
+  },
+  {
+    "check": "e1_scaler_fitted_on_its_training_rows_only",
+    "passed": true,
+    "detail": "fitted on 199,021 rows (e1_train (normal training rows)); stats recomputed and matched"
+  },
+  {
+    "check": "e1_scaler_differs_from_val_test_statistics",
+    "passed": true,
+    "detail": "fitted mean differs from val+test mean (sanity check that val/test were not used)"
+  },
+  {
+    "check": "e2_scaler_fitted_on_its_training_rows_only",
+    "passed": true,
+    "detail": "fitted on 199,366 rows (e2_train (all training rows, labels ignored)); stats recomputed and matched"
+  },
+  {
+    "check": "e2_scaler_differs_from_val_test_statistics",
+    "passed": true,
+    "detail": "fitted mean differs from val+test mean (sanity check that val/test were not used)"
+  },
+  {
+    "check": "e1_train_is_standardised",
+    "passed": true,
+    "detail": "max |mean| 7.25e-13, max |std-1| 1.34e-13"
+  },
+  {
+    "check": "inverse_transform_round_trip",
+    "passed": true,
+    "detail": "max abs error on test rows: V 3.6e-15, Amount 5.5e-12"
+  },
+  {
+    "check": "split_is_reproducible_with_same_seed",
+    "passed": true,
+    "detail": "re-ran split with seed 42; fingerprints identical"
+  },
+  {
+    "check": "raw_dataset_unchanged",
+    "passed": true,
+    "detail": "SHA-256 before and after preparation: 76274b691b16a6c4\u2026"
+  }
+]

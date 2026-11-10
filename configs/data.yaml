@@ -1,0 +1,27 @@
+# Data, split and preprocessing settings (PROJECT_PLAN.md §3.3, §11).
+# Paths are relative to the project root.
+
+data:
+  raw_path: creditcard.csv
+  sha256: 76274b691b16a6c49d3f159c883398e03ccd6d1ee12d9d8ee38f4b4b98551a89
+  expected_rows: 284807
+
+split:
+  seed: 42
+  ratios:
+    train: 0.70
+    val: 0.15
+    test: 0.15
+  # Rows with identical V1-V28 + Amount values form one group and always land in the same split.
+  # Allowed tolerance (percentage points) between each split's fraud rate and the overall rate.
+  stratify_tolerance_pp: 0.02
+
+preprocessing:
+  # Model inputs: V1-V28 plus log1p(Amount). Time and Class are never model inputs.
+  amount_transform: log1p
+  scaler: standard   # mean / population std, fitted on the experiment's training rows only
+
+paths:
+  processed_dir: data/processed
+  figures_dir: outputs/figures
+  metrics_dir: outputs/metrics

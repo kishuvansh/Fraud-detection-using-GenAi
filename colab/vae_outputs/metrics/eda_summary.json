@@ -1,0 +1,18 @@
+{
+  "normal": 284315,
+  "fraud": 492,
+  "fraud_pct": 0.1727485630620034,
+  "exact_duplicate_rows": 1081,
+  "rows_repeating_a_feature_vector": 9144,
+  "amount_median_normal": 22.0,
+  "amount_median_fraud": 9.25,
+  "amount_skew_raw": 16.977724453761006,
+  "amount_skew_log1p": 0.16270292774164008,
+  "time_span_hours": 47.99777777777778,
+  "v_std_range": [
+    0.3300832641602509,
+    1.958695803857486
+  ],
+  "v_max_excess_kurtosis": 933.3975020960183,
+  "v_max_abs_corr_all_rows": 2.3176420427152687e-14
+}

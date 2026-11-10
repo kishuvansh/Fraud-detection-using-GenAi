@@ -1,0 +1,11 @@
+check,passed,detail
+partition_counts,True,"train: 199,366 (345 fraud); val: 42,721 (74 fraud); test: 42,720 (73 fraud)"
+class_never_a_model_input,True,29 inputs: V1-V28 + log1p(Amount)
+primary_model_trained_on_normal_only,True,"199,021 normal rows"
+threshold_calibration_without_fraud_labels,True,"E1: normal validation rows; E2: all validation rows, unlabelled"
+test_labels_only_after_predictions_saved,True,split created; test labels locked → e1: test predictions saved (predictions_e1_all_seeds.csv) → e1: test labels revealed → e2: test predictions saved (predictions_e2_all_seeds.csv) → e2: test labels revealed
+synthetic_samples_come_from_the_decoder,True,"decode(z ~ N(0, I)) reproduces the exported generator"
+required_plots_exist_and_are_valid_png,True,20 figures saved
+synthetic_csv_valid,True,"42,647 rows, columns V1-V28 + Amount, no label"
+checkpoint_reloads_and_reproduces_scores,True,vae_e1_seed0.pt
+reported_metrics_match_saved_files,True,detection_metrics_per_seed.csv

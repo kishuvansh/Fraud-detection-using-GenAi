@@ -1,0 +1,29 @@
+# Raw dataset (ODbL; download from Kaggle mlg-ulb/creditcardfraud)
+creditcard.csv
+
+# Local caches
+.cache/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+
+# Large training artefacts (added in later phases)
+outputs/checkpoints/
+
+# Training logs
+outputs/logs/
+
+# Full training run artefacts (reproducible; large)
+outputs/runs/
+
+# Colab run bundle (duplicate of colab/vae_outputs/)
+colab/vae_outputs.zip
+
+# Synthetic CSVs (generated on demand by the app)
+data/synthetic/*.csv
+colab/vae_outputs/synthetic/*.csv
+
+# Large all-seeds prediction files (optional; per-seed files are kept)
+colab/vae_outputs/predictions/predictions_e1_all_seeds.csv
+colab/vae_outputs/predictions/predictions_e2_all_seeds.csv

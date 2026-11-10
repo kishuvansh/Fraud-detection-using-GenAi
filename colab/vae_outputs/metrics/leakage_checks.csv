@@ -1,0 +1,11 @@
+check,passed,detail
+splits_disjoint_and_cover_all_rows,True,"284,807 rows assigned"
+no_duplicate_group_spans_two_splits,True,group-aware split
+fraud_rate_preserved,True,"train 0.1730%, val 0.1732%, test 0.1709%"
+e1_training_rows_are_all_normal,True,"199,021 rows, 0 fraud"
+e1_calibration_rows_are_all_normal,True,"42,647 rows, 0 fraud"
+test_has_both_classes,True,73 frauds
+class_and_time_not_in_model_inputs,True,inputs = V1-V28 + log1p(Amount)
+e1_scaler_fitted_on_its_training_rows_only,True,"199,021 rows"
+e2_scaler_fitted_on_its_training_rows_only,True,"199,366 rows"
+inverse_transform_round_trip,True,V1-V28 recovered

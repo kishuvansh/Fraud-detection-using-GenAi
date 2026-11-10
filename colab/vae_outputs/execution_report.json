@@ -1,0 +1,161 @@
+{
+  "completed_utc": "2026-11-07T08:04:47+00:00",
+  "runtime_minutes": 12.1,
+  "environment": {
+    "run_started_utc": "2026-11-07T07:52:43+00:00",
+    "in_colab": false,
+    "device": "cpu",
+    "gpu": null,
+    "python": "3.13.5",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "torch_threads": 4,
+    "packages": {
+      "torch": "2.10.0",
+      "numpy": "2.3.2",
+      "pandas": "2.3.1",
+      "scikit-learn": "1.7.1",
+      "scipy": "1.16.1",
+      "matplotlib": "3.10.5"
+    }
+  },
+  "seeds": {
+    "split": 42,
+    "models": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "validation_noise": 1234,
+    "scores": 2024,
+    "bootstrap": 7,
+    "generation": 0
+  },
+  "dataset_sha256": "76274b691b16a6c49d3f159c883398e03ccd6d1ee12d9d8ee38f4b4b98551a89",
+  "dataset_checks": {
+    "columns_match": true,
+    "row_count_284807": true,
+    "class_values_0_1": true,
+    "fraud_count_492": true,
+    "no_missing_values": true,
+    "no_infinite_values": true,
+    "amount_non_negative": true,
+    "sha256_matches_audited_copy": true
+  },
+  "partition_counts": {
+    "train": {
+      "rows": 199366,
+      "normal": 199021,
+      "fraud": 345
+    },
+    "val": {
+      "rows": 42721,
+      "normal": 42647,
+      "fraud": 74
+    },
+    "test": {
+      "rows": 42720,
+      "normal": 42647,
+      "fraud": 73
+    },
+    "e1_train": {
+      "rows": 199021,
+      "normal": 199021,
+      "fraud": 0
+    },
+    "e1_val": {
+      "rows": 42647,
+      "normal": 42647,
+      "fraud": 0
+    },
+    "e2_train": {
+      "rows": 199366,
+      "normal": 199021,
+      "fraud": 345
+    },
+    "e2_val": {
+      "rows": 42721,
+      "normal": 42647,
+      "fraud": 74
+    }
+  },
+  "verification_checks": [
+    {
+      "check": "partition_counts",
+      "passed": true,
+      "detail": "train: 199,366 (345 fraud); val: 42,721 (74 fraud); test: 42,720 (73 fraud)"
+    },
+    {
+      "check": "class_never_a_model_input",
+      "passed": true,
+      "detail": "29 inputs: V1-V28 + log1p(Amount)"
+    },
+    {
+      "check": "primary_model_trained_on_normal_only",
+      "passed": true,
+      "detail": "199,021 normal rows"
+    },
+    {
+      "check": "threshold_calibration_without_fraud_labels",
+      "passed": true,
+      "detail": "E1: normal validation rows; E2: all validation rows, unlabelled"
+    },
+    {
+      "check": "test_labels_only_after_predictions_saved",
+      "passed": true,
+      "detail": "split created; test labels locked \u2192 e1: test predictions saved (predictions_e1_all_seeds.csv) \u2192 e1: test labels revealed \u2192 e2: test predictions saved (predictions_e2_all_seeds.csv) \u2192 e2: test labels revealed"
+    },
+    {
+      "check": "synthetic_samples_come_from_the_decoder",
+      "passed": true,
+      "detail": "decode(z ~ N(0, I)) reproduces the exported generator"
+    },
+    {
+      "check": "required_plots_exist_and_are_valid_png",
+      "passed": true,
+      "detail": "20 figures saved"
+    },
+    {
+      "check": "synthetic_csv_valid",
+      "passed": true,
+      "detail": "42,647 rows, columns V1-V28 + Amount, no label"
+    },
+    {
+      "check": "checkpoint_reloads_and_reproduces_scores",
+      "passed": true,
+      "detail": "vae_e1_seed0.pt"
+    },
+    {
+      "check": "reported_metrics_match_saved_files",
+      "passed": true,
+      "detail": "detection_metrics_per_seed.csv"
+    }
+  ],
+  "label_access_log": [
+    {
+      "time_utc": "2026-11-07T07:52:48.186+00:00",
+      "event": "split created; test labels locked"
+    },
+    {
+      "time_utc": "2026-11-07T07:59:00.767+00:00",
+      "event": "e1: test predictions saved (predictions_e1_all_seeds.csv)"
+    },
+    {
+      "time_utc": "2026-11-07T07:59:00.769+00:00",
+      "event": "e1: test labels revealed"
+    },
+    {
+      "time_utc": "2026-11-07T08:04:37.854+00:00",
+      "event": "e2: test predictions saved (predictions_e2_all_seeds.csv)"
+    },
+    {
+      "time_utc": "2026-11-07T08:04:37.856+00:00",
+      "event": "e2: test labels revealed"
+    }
+  ],
+  "headline": {
+    "e1_mean_average_precision": 0.43155445994067626,
+    "e2_mean_average_precision": 0.037737492312616396
+  }
+}

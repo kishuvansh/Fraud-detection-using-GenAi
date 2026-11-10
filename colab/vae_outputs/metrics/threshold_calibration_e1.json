@@ -1,0 +1,14 @@
+{
+  "method": "99th percentile of reconstruction error on normal validation rows",
+  "rows": 42647,
+  "threshold": 1.229167387485505,
+  "validation_flag_rate": 0.010012427603348419,
+  "fraud_labels_used": false,
+  "thresholds_all_seeds": {
+    "0": 1.229167387485505,
+    "1": 1.2302892374992371,
+    "2": 1.2839354395866396,
+    "3": 1.2342496824264528,
+    "4": 1.2178025794029237
+  }
+}

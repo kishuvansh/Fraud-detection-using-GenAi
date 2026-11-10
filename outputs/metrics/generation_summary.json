@@ -1,0 +1,230 @@
+{
+  "n_samples": 42647,
+  "real_reference": "42,647 normal test transactions (held out)",
+  "decoder_noise_std_fitted_on_train": {
+    "V1": 0.5705,
+    "V2": 0.4619,
+    "V3": 0.7344,
+    "V4": 0.6763,
+    "V5": 0.5691,
+    "V6": 0.5539,
+    "V7": 0.5584,
+    "V8": 0.4028,
+    "V9": 0.6389,
+    "V10": 0.5583,
+    "V11": 0.9183,
+    "V12": 0.6521,
+    "V13": 0.9023,
+    "V14": 0.6805,
+    "V15": 0.8562,
+    "V16": 0.7036,
+    "V17": 0.7204,
+    "V18": 0.7563,
+    "V19": 0.7921,
+    "V20": 0.4249,
+    "V21": 0.4141,
+    "V22": 0.8611,
+    "V23": 0.4988,
+    "V24": 0.8764,
+    "V25": 0.9229,
+    "V26": 0.9438,
+    "V27": 0.5626,
+    "V28": 0.5056,
+    "log1p_Amount": 0.8178
+  },
+  "variants": {
+    "decoder_mean": {
+      "csv": "data/synthetic/synthetic_e1_decoder_mean_n42647_seed0.csv",
+      "validity": {
+        "rows": 42647,
+        "finite_pct": 100.0,
+        "amount_non_negative_pct": 100.0,
+        "amount_two_decimals_pct": 100.0,
+        "within_real_observed_range_pct": 99.8124135343635,
+        "amount_zero_pct_synthetic": 0.0,
+        "amount_zero_pct_real": 0.6354491523436584
+      },
+      "mean_ks": 0.22110137512199182,
+      "max_ks": 0.3709053391797782,
+      "mean_wasserstein_std_units": 0.37498241575922203,
+      "mean_abs_mean_diff_in_real_std_V": 0.029804455094443415,
+      "mean_std_ratio_V": 0.4899627772191118,
+      "std_ratio_amount": 0.6492732392244239,
+      "median_central_98_width_ratio": 0.5837012818706346,
+      "median_tail_99_9_width_ratio": 0.5461834288945733,
+      "correlation": {
+        "frobenius_norm_of_difference": 3.8032682600559538,
+        "mean_abs_offdiag_difference": 0.091313204109708,
+        "max_abs_offdiag_difference": 0.847359837478336,
+        "mean_abs_offdiag_real": 0.026125895647216093,
+        "mean_abs_offdiag_synthetic": 0.09916875914173251,
+        "amount_correlations": {
+          "Amount~V2": {
+            "real": -0.5192444183756969,
+            "synthetic": -0.5571860154286042
+          },
+          "Amount~V5": {
+            "real": -0.36906239260464957,
+            "synthetic": -0.37298277233335275
+          },
+          "Amount~V7": {
+            "real": 0.37862040954946113,
+            "synthetic": 0.28425404480814775
+          },
+          "Amount~V20": {
+            "real": 0.34545976686559393,
+            "synthetic": 0.5446063700262267
+          },
+          "Amount~V1": {
+            "real": -0.21705975128797006,
+            "synthetic": -0.14978381230328947
+          }
+        }
+      },
+      "pca_explained_variance_ratio": [
+        0.05560532613230407,
+        0.04793943937225278
+      ],
+      "c2st": {
+        "samples_per_class": 20000,
+        "logistic_regression": {
+          "roc_auc_mean": 0.590130525,
+          "roc_auc_std": 0.06408213583824715
+        },
+        "gradient_boosting": {
+          "roc_auc_mean": 0.9999251874999999,
+          "roc_auc_std": 2.092964404861123e-05
+        }
+      },
+      "memorisation": {
+        "samples": 5000,
+        "synthetic_to_train": {
+          "median": 1.8905764945376728,
+          "p05": 1.5581747307776133,
+          "min": 1.2256475959433797
+        },
+        "holdout_to_train": {
+          "median": 0.8945019596371679,
+          "p05": 0.08465115599891154,
+          "min": 0.0001994320110064747
+        },
+        "synthetic_exact_copies": 0,
+        "share_synthetic_closer_than_holdout_p05": 0.0
+      }
+    },
+    "decoder_mean_plus_noise": {
+      "csv": "data/synthetic/synthetic_e1_decoder_mean_plus_noise_n42647_seed0.csv",
+      "validity": {
+        "rows": 42647,
+        "finite_pct": 100.0,
+        "amount_non_negative_pct": 100.0,
+        "amount_two_decimals_pct": 100.0,
+        "within_real_observed_range_pct": 94.1355781180388,
+        "amount_zero_pct_synthetic": 2.140830539076606,
+        "amount_zero_pct_real": 0.6354491523436584
+      },
+      "mean_ks": 0.053262427805489024,
+      "max_ks": 0.16062091120125685,
+      "mean_wasserstein_std_units": 0.0958262264366123,
+      "mean_abs_mean_diff_in_real_std_V": 0.028391819785389582,
+      "mean_std_ratio_V": 0.8379557390839952,
+      "std_ratio_amount": 3.885768709071563,
+      "median_central_98_width_ratio": 0.8839567562952115,
+      "median_tail_99_9_width_ratio": 0.7664286209801222,
+      "correlation": {
+        "frobenius_norm_of_difference": 1.6185778091321206,
+        "mean_abs_offdiag_difference": 0.037580376919677735,
+        "max_abs_offdiag_difference": 0.3470265789912722,
+        "mean_abs_offdiag_real": 0.026125895647216093,
+        "mean_abs_offdiag_synthetic": 0.03236770994495128,
+        "amount_correlations": {
+          "Amount~V2": {
+            "real": -0.5192444183756969,
+            "synthetic": -0.17221783938442134
+          },
+          "Amount~V5": {
+            "real": -0.36906239260464957,
+            "synthetic": -0.11042942766930358
+          },
+          "Amount~V7": {
+            "real": 0.37862040954946113,
+            "synthetic": 0.0746535736069068
+          },
+          "Amount~V20": {
+            "real": 0.34545976686559393,
+            "synthetic": 0.16014133353149942
+          },
+          "Amount~V1": {
+            "real": -0.21705975128797006,
+            "synthetic": -0.044541206061313655
+          }
+        }
+      },
+      "pca_explained_variance_ratio": [
+        0.05560532613230407,
+        0.04793943937225278
+      ],
+      "c2st": {
+        "samples_per_class": 20000,
+        "logistic_regression": {
+          "roc_auc_mean": 0.549350425,
+          "roc_auc_std": 0.0037994013538319524
+        },
+        "gradient_boosting": {
+          "roc_auc_mean": 0.9907945125,
+          "roc_auc_std": 0.0005228923622506729
+        }
+      },
+      "memorisation": {
+        "samples": 5000,
+        "synthetic_to_train": {
+          "median": 3.1006188754687583,
+          "p05": 2.4533449843039183,
+          "min": 1.718391624280938
+        },
+        "holdout_to_train": {
+          "median": 0.8945019596371679,
+          "p05": 0.08465115599891154,
+          "min": 0.0001994320110064747
+        },
+        "synthetic_exact_copies": 0,
+        "share_synthetic_closer_than_holdout_p05": 0.0
+      }
+    }
+  },
+  "real_vs_real_reference": {
+    "mean_ks": 0.005994681276849328,
+    "mean_wasserstein_std_units": 0.011318159468714102,
+    "c2st": {
+      "samples_per_class": 20000,
+      "logistic_regression": {
+        "roc_auc_mean": 0.5029654750000001,
+        "roc_auc_std": 0.003787431421532585
+      },
+      "gradient_boosting": {
+        "roc_auc_mean": 0.50299378125,
+        "roc_auc_std": 0.0038579838298832513
+      }
+    }
+  },
+  "temperatures_decoder_mean": [
+    {
+      "temperature": 1.0,
+      "mean_ks": 0.22110137512199182,
+      "mean_wasserstein": 0.37498241575922203,
+      "mean_std_ratio_V": 0.4899627772191118
+    },
+    {
+      "temperature": 0.8,
+      "mean_ks": 0.2737565726012179,
+      "mean_wasserstein": 0.4697890233667703,
+      "mean_std_ratio_V": 0.3189355902878644
+    },
+    {
+      "temperature": 0.5,
+      "mean_ks": 0.3723316431684971,
+      "mean_wasserstein": 0.5720393345874805,
+      "mean_std_ratio_V": 0.15175400716254736
+    }
+  ]
+}
